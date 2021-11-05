@@ -1,0 +1,33 @@
+<canvas id='tablero' width=500 height=450></canvas>
+<script>
+	function polygon(a, colorBorde, colorRelleno) { 
+  		ctx.lineWidth = 0;	
+  		ctx.beginPath()
+  		ctx.strokeStyle = colorBorde
+  		ctx.fillStyle = colorRelleno
+  		ctx.moveTo(a[0],a[1])
+  		for (i=2; i < a.length; i+=2)
+   		 ctx.lineTo(a[i],a[i+1]);
+  		ctx.closePath()
+  		ctx.stroke()
+ 		ctx.fill()
+	}
+	function sumaTrasl(v1, v2){
+		var s = [];
+		for (i=0; i < v1.length; i++)
+   		 s[i] = v1[i] + v2[i % 2 == 0 ? 0 : 1];
+		return s;
+	}
+	//0,0 ,0,50 ,40,50 ,40,40 ,10,40 ,10,30, 20,30 ,20,20, 10,20 ,10,10 ,40,10 , 40,0]];
+	var c = document.getElementById('tablero')
+	var ctx = c.getContext('2d')
+
+	var letra_e = [40,40 ,120,40 ,120,80 ,100,80 ,120,120 ,100,120, 80,80 ,60,80, 60,120 ,40,120];
+	var vt = [350,250]; //vector traslacion
+	var letra_e_transform = sumaTrasl(letra_e, vt);
+
+	polygon(letra_e, 'yellow', 'red');
+        polygon(letra_e_transform, 'yellow', 'red');
+
+	
+</script>

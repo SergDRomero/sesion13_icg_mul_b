@@ -1,0 +1,58 @@
+<canvas id='tablero' width=500 height=450></canvas>
+<script>
+	function polygon(a, colorBorde, colorRelleno) { 
+  		ctx.lineWidth = 0;	
+  		ctx.beginPath()
+  		ctx.strokeStyle = colorBorde
+  		ctx.fillStyle = colorRelleno
+  		ctx.moveTo(a[0][0],a[1][0])
+  		for (i=1; i < a[0].length; i+=1)
+            ctx.lineTo(a[0][i],a[1][i]);
+  		ctx.closePath()
+  		ctx.stroke()
+ 		ctx.fill()
+	}
+    function sumaTrasl(obj, tras){
+        var objTras = [[],[]]; //variable para guardar resultado final 
+        console.log(objTras)
+        for (var i=0; i < obj[0].length; i+=1){ //rotacion del vertice i/2
+            objTras[0][i] = obj[0][i] +tras[0];
+            objTras[1][i] = obj[1][i]+tras[1];
+        }
+        return objTras;
+	}
+	function rotacionPunto(x_, y_, rot){
+		var punto = [];
+
+        	punto[0] = x_*Math.cos(rot)- y_*-Math.sin(rot);
+        	punto[1] = y_*Math.cos(rot)+ x_*-Math.sin(rot); 
+		return punto;
+	}
+
+	function rotacionObj(obj, r){
+		var objRotado = [[],[]]; //variable para guardar resultado final 
+
+		for (var i=0; i < obj[0].length; i+=1){ //rotacion del vertice i/2
+		    var punto = rotacionPunto(obj[0][i], obj[1][i], r);
+  		    objRotado[0][i] = punto[0];
+            	    objRotado[1][i] = punto[1];
+        	}
+		return objRotado;
+	}
+	
+	var c = document.getElementById('tablero');
+	var ctx = c.getContext('2d');
+
+	var letra_e =[[40,80,90,100,140,140,120,120,100,80,60,60,40],[40,40,120,40,40,200,200,80,200,200,80,200,200]];
+        
+        polygon(letra_e, 'magenta', 'magenta');
+       
+	var r = Math.PI*5/12; //angulo rotacion
+	var letra_e_rotada = rotacionObj(letra_e, r);
+
+        var vt = [-40,160]; //vector traslacion
+        var letra_e_transform = sumaTrasl(letra_e_rotada, vt)
+
+        polygon(letra_e_transform, 'blue', 'blue');
+	
+</script>
