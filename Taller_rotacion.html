@@ -12,15 +12,16 @@
   		ctx.stroke()
  		ctx.fill()
 	}
-    function sumaTrasl(obj, tras){
+
+    	function sumaTrasl(obj, tras){
         var objTras = [[],[]]; //variable para guardar resultado final 
-        console.log(objTras)
         for (var i=0; i < obj[0].length; i+=1){ //rotacion del vertice i/2
             objTras[0][i] = obj[0][i] +tras[0];
             objTras[1][i] = obj[1][i]+tras[1];
         }
         return objTras;
 	}
+
 	function rotacionPunto(x_, y_, rot){
 		var punto = [];
 
