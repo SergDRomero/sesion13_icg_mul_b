@@ -45,14 +45,14 @@
 
 	var letra_e =[[40,80,90,100,140,140,120,120,100,80,60,60,40],[40,40,120,40,40,200,200,80,200,200,80,200,200]];
         
-        polygon(letra_e, 'magenta', 'magenta');
+        polygon(letra_e, 'yellow', 'red',5);
        
 	var r = Math.PI*5/12; //angulo rotacion
 	var letra_e_rotada = rotacionObj(letra_e, r);
 
-        var vt = [-40,160]; //vector traslacion
+        var vt = [-45,175]; //vector traslacion
         var letra_e_transform = sumaTrasl(letra_e_rotada, vt)
 
-        polygon(letra_e_transform, 'yellow', 'red');
+        polygon(letra_e_transform, 'red', 'yellow',5);
 	
 </script>
